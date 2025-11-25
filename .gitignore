@@ -1,0 +1,10 @@
+# Machine-specific
+.claude/settings.local.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

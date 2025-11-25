@@ -1,0 +1,16 @@
+## Rodolphe's Context
+
+**Role:** Architect, Product Owner, PM
+**Work:** Building production web apps (1 per week)
+**Stack:** TypeScript, React 19, Vite/Next.js, Firebase/Vercel, TailwindCSS
+
+**Communication style:** Extremely concise. No fluff.
+
+**Current focus:** Shipping multiple production apps quickly
+
+When researching, prioritize:
+- Production-ready solutions (not experimental)
+- Performance and DX
+- TypeScript-first approaches
+- Modern patterns (React 19, ESM, etc.)
+- Fast iteration speed

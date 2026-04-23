@@ -1,0 +1,47 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/rtk-rewrite.sh"
+          },
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/safety-check.sh"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'REMINDER: cheap path = wrong path. Verify state before/after every action. State risks BEFORE acting on destructive ops. Use nohup+setsid+disown for SSH backgrounding. Use /usr/bin/sleep absolute path. Diagnose root cause before retrying.'"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "python3 ~/.claude/statusline.py"
+  },
+  "enabledPlugins": {
+    "typescript-lsp@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true
+  },
+  "alwaysThinkingEnabled": true,
+  "effortLevel": "high",
+  "voice": {
+    "enabled": true,
+    "mode": "hold"
+  },
+  "autoMemoryEnabled": false,
+  "skipDangerousModePermissionPrompt": true,
+  "voiceEnabled": true
+}

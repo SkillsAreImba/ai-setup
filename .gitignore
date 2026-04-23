@@ -84,7 +84,10 @@ skills/holo/
 # Local machine/editor noise
 *.log
 .DS_Store
+Thumbs.db
 .claudeignore
 settings.local.json
 settings.json.bak
 CLAUDE.md.bak-*
+.vscode/
+.idea/

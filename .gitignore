@@ -91,3 +91,5 @@ settings.json.bak
 CLAUDE.md.bak-*
 .vscode/
 .idea/
+.claude/
+.gemini/

@@ -1,0 +1,12 @@
+# pi runtime state — secrets, session history, caches
+auth.json
+sessions/
+pi-session-*.html
+git/
+
+# Backups left by upgrades / migrations
+*.bak
+*.bak-*
+*.bak.*
+node_modules/
+dist/

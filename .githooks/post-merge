@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+BOOTSTRAP="${REPO_ROOT}/bootstrap.sh"
+
+if [[ -x "${BOOTSTRAP}" ]]; then
+  echo "[post-merge] Running bootstrap: ${BOOTSTRAP}"
+  bash "${BOOTSTRAP}"
+else
+  echo "[post-merge] bootstrap.sh missing or not executable: ${BOOTSTRAP}" >&2
+fi

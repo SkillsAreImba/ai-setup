@@ -1,0 +1,27 @@
+{
+  "packages": [
+    "extensions/editor/index.ts"
+  ],
+  "lastChangelogVersion": "0.72.1",
+  "defaultProvider": "local-llama",
+  "defaultModel": "qwen9b-q6",
+  "defaultThinkingLevel": "medium",
+  "enabledModels": [
+    "local-llama/qwen9b-q6",
+    "local-llama/qwen9b-q4",
+    "local-llama/e4b-q6",
+    "local-llama/e4b",
+    "local-llama/26b",
+    "nvidia/z-ai/glm-5.1",
+    "openai-codex/gpt-5.4-mini",
+    "openai-codex/gpt-5.5",
+    "kalicorp/kali-starcoder"
+  ],
+  "hideThinkingBlock": true,
+  "treeFilterMode": "default",
+  "extensions": [
+    "-extensions/custom-statusline.ts",
+    "-extensions/statusline.ts"
+  ],
+  "quietStartup": false
+}

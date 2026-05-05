@@ -5,10 +5,13 @@ set -euo pipefail
 # Safe to re-run after clone/pull.
 
 CLAUDE_DIR="${HOME}/.claude"
+PI_AGENT_SOURCE_DIR="${CLAUDE_DIR}/profiles/pi-agent"
+PI_AGENT_TARGET_DIR="${HOME}/.pi/agent"
 GSTACK_DIR="${CLAUDE_DIR}/skills/gstack"
 GSTACK_REPO="${GSTACK_REPO:-https://github.com/garrytan/gstack.git}"
 GSTACK_REF="${GSTACK_REF:-main}" # Can be a tag, branch, or commit.
 ENABLE_GSTACK="${ENABLE_GSTACK:-1}" # Set to 0 to skip.
+ENABLE_PI_AGENT_SYNC="${ENABLE_PI_AGENT_SYNC:-1}" # Set to 0 to skip.
 
 log() {
   printf '[bootstrap] %s\n' "$*"
@@ -69,9 +72,36 @@ sync_gstack() {
   fi
 }
 
+sync_pi_agent_profile() {
+  if [[ "${ENABLE_PI_AGENT_SYNC}" != "1" ]]; then
+    log "Skipping pi-agent profile sync (ENABLE_PI_AGENT_SYNC=${ENABLE_PI_AGENT_SYNC})."
+    return 0
+  fi
+
+  if [[ ! -d "${PI_AGENT_SOURCE_DIR}" ]]; then
+    log "No pi-agent profile at ${PI_AGENT_SOURCE_DIR}; skipping."
+    return 0
+  fi
+
+  mkdir -p "${PI_AGENT_TARGET_DIR}"
+
+  if command -v rsync >/dev/null 2>&1; then
+    log "Syncing pi-agent profile to ${PI_AGENT_TARGET_DIR} via rsync"
+    rsync -a --delete \
+      --exclude '.git/' \
+      --exclude '.DS_Store' \
+      --exclude '__pycache__/' \
+      "${PI_AGENT_SOURCE_DIR}/" "${PI_AGENT_TARGET_DIR}/"
+  else
+    log "rsync not found; falling back to cp (no delete sync)"
+    cp -a "${PI_AGENT_SOURCE_DIR}/." "${PI_AGENT_TARGET_DIR}/"
+  fi
+}
+
 main() {
   ensure_claude_dir
   restore_exec_bits
+  sync_pi_agent_profile
   sync_gstack
   log "Done."
 }

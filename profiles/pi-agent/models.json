@@ -1,0 +1,80 @@
+{
+  "providers": {
+    "local-llama": {
+      "baseUrl": "http://127.0.0.1:8081/v1",
+      "api": "openai-completions",
+      "apiKey": "none",
+      "compat": {
+        "supportsDeveloperRole": false,
+        "supportsReasoningEffort": false
+      },
+      "models": [
+        {
+          "id": "qwen9b-q6",
+          "name": "Qwen 3.5 9B Q6_K text (64K, KV q8_0)",
+          "contextWindow": 65536,
+          "maxTokens": 16384
+        },
+        {
+          "id": "qwen9b-q4",
+          "name": "Qwen 3.5 9B Q4_K_M text (64K, KV q8_0)",
+          "contextWindow": 65536,
+          "maxTokens": 16384
+        },
+        {
+          "id": "e4b-q6",
+          "name": "Gemma 4 E4B Q6_K vision (128K)",
+          "contextWindow": 131072,
+          "maxTokens": 16384
+        },
+        {
+          "id": "e4b",
+          "name": "Gemma 4 E4B Q4_K_M vision (16K)",
+          "contextWindow": 16384,
+          "maxTokens": 8192
+        },
+        {
+          "id": "26b",
+          "name": "Gemma 4 26B-A4B Q4_K_M (8K)",
+          "contextWindow": 8192,
+          "maxTokens": 4096
+        }
+      ]
+    },
+    "nvidia": {
+      "baseUrl": "https://integrate.api.nvidia.com/v1",
+      "api": "openai-completions",
+      "apiKey": "NVIDIA_API_KEY",
+      "models": [
+        {
+          "id": "z-ai/glm-5.1",
+          "name": "GLM 5.1 (Z.AI via NVIDIA Integrate)",
+          "reasoning": true,
+          "input": [
+            "text"
+          ],
+          "contextWindow": 131072,
+          "maxTokens": 16384
+        }
+      ]
+    },
+    "kalicorp": {
+      "baseUrl": "https://ai.kalicorp.fr/api",
+      "api": "anthropic-messages",
+      "apiKey": "sk-f5c5f2ac7f04402f8697dd680c996be2",
+      "models": [
+        {
+          "id": "kali-starcoder",
+          "name": "Kali-code",
+          "reasoning": true,
+          "input": [
+            "text",
+            "image"
+          ],
+          "contextWindow": 131072,
+          "maxTokens": 16384
+        }
+      ]
+    }
+  }
+}
